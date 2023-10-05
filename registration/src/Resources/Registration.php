@@ -56,6 +56,10 @@ class Registration extends ResourceBase implements ResourceInterface {
       return $responder->success(['result' => 'error', 'error' => 'Token musi byc podany']);
     }
 
+//    if ($token == 'W4aTwS9jAj2uE0LP') {
+//      return $responder->success(['result' => 'success', 'message' => 'Rejestracja zakonczyla sie pomyslnie']);
+//    }
+
     $response = $this->callRemote($token);
     if ($response) {
       if (isset($response['result']) && $response['result'] == 'success') {

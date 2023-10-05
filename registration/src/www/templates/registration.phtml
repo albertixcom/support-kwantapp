@@ -77,14 +77,11 @@ use KwantRegistration\Resources\Registration;
           $.ajax({
               "url": PAGE_URL,
               "method": "POST",
-              "timeout": 0,
-              "processData": false,
               "mimeType": "multipart/form-data",
-              "contentType": false,
-              data: form,
-              success: function(response){
+              data: {"token": TOKEN},
+              success: function(_response){
                   $('.loading').hide();
-                  console.log("response", response);
+                  const response = JSON.parse(_response);
                   if (response.hasOwnProperty('result')) {
                       if (response.result === 'success') {
                           $('.success-container').show();
