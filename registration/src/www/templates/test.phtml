@@ -1,0 +1,58 @@
+<?php
+
+use KwantRegistration\App;
+use KwantRegistration\I18N\Lang;
+use KwantRegistration\Resources\Registration;
+
+/** @var $this Registration */
+?>
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Kwant">
+  <title>Kwant - <?=Lang::l('Potwierdzenie rezerwacji')?></title>
+  <link href="<?= App::BaseUrl()?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?= App::BaseUrl()?>css/custom.css" rel="stylesheet">
+
+</head>
+<body class="d-flex h-100 text-center">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto"></header>
+  <main class="px-3">
+    <img class="img-fluid d-block mx-auto mb-4" src="<?= App::BaseUrl()?>assets/brand/logo_kwant.svg" alt="">
+
+
+
+    <!-- success -->
+    <div class="success-container">
+      <div>
+        <?php
+          // echo $this->generateAutoregistrationLink();
+        ?>
+      </div>
+      <?php
+      /*
+      <a class="btn btn-outline-success btn-lg" href="<?=$this->generateAutoregistrationLink()?>">TEST</a>
+      */
+      ?>
+
+    </div>
+
+
+  </main>
+  <footer class="mt-auto text-dark-50">
+    <p>©2023 <a href="https://www.kwant.net.pl/" target="_blank" class="brand-link">Kwant</a> Hurtownie Elektryczne.<br>All rights reserved.</p>
+  </footer>
+</div>
+
+<script src="<?= App::BaseUrl()?>assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?= App::BaseUrl()?>assets/dist/js/jquery-3.6.4.min.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+    "name": "albertix/www-kwant",
+    "version": "0.0.1",
+    "description": "WWW",
+    "type": "project",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "KwantRegistration\\": "src/"
+        }
+    },
+    "require": {
+        "php": "7.4.*",
+        "monolog/monolog": "^2.8.0",
+        "guzzlehttp/guzzle": "^7.0",
+        "nyholm/psr7": "^1.5.1",
+        "nyholm/psr7-server": "^1.0.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alberto Starosta",
+            "email": "albertix.com@gmail.com"
+        }
+    ]
+}

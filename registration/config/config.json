@@ -1,0 +1,27 @@
+{
+  "app": {
+    "short_name": "KwantApp",
+    "long_name": "KwantApp",
+    "version": "0.0.1",
+    "software_uuid": "9322bd02-28c1-4e04-a5f8-0567534e6acc"
+  },
+  "mysql": {
+    "host": "localhost",
+    "dbname": "kwant",
+    "user": "kwant",
+    "pass": "9RZax6dwBKJY5AJ"
+  },
+  "api": {
+    "endpoint": "https://api.kwant.app",
+    "X-API-Key": "ZU63WcTmJ6G13s014szxH3aCRr5zG7kR1eAC8IEaziRecr0h07Egq7La9XCrUwsr"
+  },
+  "base_url": "https://www.kwant.app/",
+  "autoRegistartion": {
+    "key": "*9EZmsuu#716gaSQ",
+    "url": "https://kwant.app/auth/registration/{HASH}"
+  },
+  "registrationKey": "nzB^62H!0Zz9!^BrlDkFDQfTBZ*R5Gdp",
+  "enviroment": "dev"
+
+}
+

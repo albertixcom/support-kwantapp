@@ -1,0 +1,116 @@
+<?php
+
+use KwantRegistration\App;
+use KwantRegistration\I18N\Lang;
+use KwantRegistration\Resources\Registration;
+
+/** @var $this Registration */
+?>
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Kwant">
+  <title>Kwant - <?=Lang::l('Potwierdzenie rezerwacji')?></title>
+  <link href="<?= App::BaseUrl()?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?= App::BaseUrl()?>css/custom.css" rel="stylesheet">
+
+</head>
+<body class="d-flex h-100 text-center">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto"></header>
+  <main class="px-3">
+    <img class="img-fluid d-block mx-auto mb-4" src="<?= App::BaseUrl()?>assets/brand/logo_kwant.svg" alt="">
+    <div class="loading py-5">
+      <div class="spinner-border spinner" role="status"></div>
+      <h3 class="pt-3"><?=Lang::l('Rejestracja w toku. Proszę czekać ...')?></h3>
+    </div>
+
+    <!-- error -->
+    <div class="error-container" style="display: none;">
+      <div>
+        <div class="d-flex mb-3 align-items-center justify-content-center">
+          <img class="icon" src="<?= App::BaseUrl()?>assets/images/access-denied-forbidden-icon.svg" alt="" />
+          <h1><?= Lang::l('Błąd podczas rejestracji')?></h1>
+        </div>
+        <p class="lead error-message"></p>
+        <p class="info-text"><?= Lang::l('W przypadku trudności podczas procesu rejestracji, prosimy o kontakt z działem technicznym.')?><br>
+          email: <a href="mailto:support@kwant.app" class="info-text-item">support@kwant.app</a> - tel: <span class="info-text-item">00000000</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- success -->
+    <div class="success-container" style="display: none;">
+      <h1 class="mt-5"><?= Lang::l('Rejestracja zakończona pomyślnie.')?></h1>
+      <p class="lead success-message"><?= Lang::l('Zaloguj się twoimi danymi do aplikacji')?></p>
+      <a class="btn btn-outline-success btn-lg" href="https://kwant.app/auth/login">Przejdź do logowania</a>
+
+    </div>
+
+
+  </main>
+  <footer class="mt-auto text-dark-50">
+    <p>©2023 <a href="https://www.kwant.net.pl/" target="_blank" class="brand-link">Kwant</a> Hurtownie Elektryczne.<br>All rights reserved.</p>
+  </footer>
+</div>
+
+<script src="<?= App::BaseUrl()?>assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?= App::BaseUrl()?>assets/dist/js/jquery-3.6.4.min.js"></script>
+<script>
+  const PAGE_URL = '/registration/';
+  const TOKEN = '<?= $this->get('token') ?>';
+  const SERVER_ERROR = '<?= Lang::l('Błąd komunikacji z serwerem. Skontaktuj sie z działem obsługi.')?>';
+</script>
+<script>
+
+  // richiesta ajax di registrazione
+  (function () {
+
+      function process() {
+          console.log("Starting");
+          let form = new FormData();
+          form.append("token", TOKEN);
+          $.ajax({
+              "url": PAGE_URL,
+              "method": "POST",
+              "timeout": 0,
+              "processData": false,
+              "mimeType": "multipart/form-data",
+              "contentType": false,
+              data: form,
+              success: function(response){
+                  $('.loading').hide();
+                  console.log("response", response);
+                  if (response.hasOwnProperty('result')) {
+                      if (response.result === 'success') {
+                          $('.success-container').show();
+                      } else if (response.result === 'error') {
+                          $('.error-message').text(response.error);
+                          $('.error-container').show();
+                      } else {
+                          $('.error-message').text(SERVER_ERROR);
+                          $('.error-container').show();
+                      }
+                  } else {
+                      $('.error-message').text(SERVER_ERROR);
+                      $('.error-container').show();
+                  }
+              }
+          });
+      }
+
+      setTimeout(function() {
+          process();
+      }, 1000);
+
+
+  })();
+
+</script>
+
+</body>
+</html>

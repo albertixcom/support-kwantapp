@@ -1,0 +1,50 @@
+.brand-link {
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.loading .spinner {
+    width: 3rem;
+    height: 3rem;
+    color: #0268AE;
+}
+
+h1 {
+    font-weight: 700;
+    padding-left: 32px;
+}
+
+/** Error */
+.error-container {
+    display: inline-flex;
+    padding: 2em;
+    border: 3px dotted #d8453e;
+    border-radius: 25px;
+    color: #d8453e;
+}
+
+.error-container .icon {
+    max-height: 8rem;
+}
+
+.error-container .info-text {
+    border-top: 1px solid #e1e1e1;
+    padding-top: 16px;
+    font-size: .9em;
+    color: #393939;
+}
+
+.error-container .info-text-item {
+    font-weight: 600;
+    color: #393939;
+    text-decoration: none;
+}
+
+/** success */
+.success-container {
+    color: #0f960f;
+}
+
+.success-container .success-message {
+    color: #393939;
+}
